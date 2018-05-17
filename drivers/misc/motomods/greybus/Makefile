@@ -123,12 +123,6 @@ ifeq ($(CONFIG_MODS_2ND_GEN), y)
 CONFIG_OPTIONS_ENABLE += MODS_2ND_GEN
 endif
 
-$(foreach opt,$(CONFIG_OPTIONS_ENABLE),$(if $(CONFIG_$(opt)),, \
-     $(error CONFIG_$(opt) is disabled in the kernel configuration and must be enable \
-     to continue compilation)))
-$(foreach opt,$(CONFIG_OPTIONS_DISABLE),$(if $(filter m y, $(CONFIG_$(opt))), \
-     $(error CONFIG_$(opt) is enabled in the kernel configuration and must be disable \
-     to continue compilation),))
 endif
 
 # add -Wall to try to catch everything we can.
