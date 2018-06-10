@@ -18,6 +18,16 @@
 #include <linux/syscalls.h>
 #include <linux/file.h>
 
+unsigned long vm_max_readahead = INITIAL_VM_MAX_READAHEAD;
+int sysctl_vm_max_readahead_handler(struct ctl_table *table, int write,
+void __user *buffer, size_t *length, loff_t *ppos)
+{
+	proc_doulongvec_minmax(table, write, buffer, length, ppos);
+	vm_max_readahead >> (PAGE_SHIFT - 10);
+	return 0;
+}
+
+
 #include "internal.h"
 
 /*
@@ -217,7 +227,7 @@ int force_page_cache_readahead(struct address_space *mapping, struct file *filp,
 	while (nr_to_read) {
 		int err;
 
-		unsigned long this_chunk = (2 * 1024 * 1024) / PAGE_CACHE_SIZE;
+		unsigned long this_chunk = (2 * 4096 * 4096) / PAGE_CACHE_SIZE;
 
 		if (this_chunk > nr_to_read)
 			this_chunk = nr_to_read;

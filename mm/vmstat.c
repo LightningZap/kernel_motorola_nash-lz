@@ -146,8 +146,8 @@ int calculate_normal_threshold(struct zone *zone)
 	 * 70		64		7	2-4 GB		5
 	 * 84		64		7	4-8 GB		6
 	 * 108		512		9	4-8 GB		6
-	 * 125		1024		10	8-16 GB		8
-	 * 125		1024		10	16-32 GB	9
+	 * 125		4096		10	8-16 GB		8
+	 * 125		4096		10	16-32 GB	9
 	 */
 
 	mem = zone->managed_pages >> (27 - PAGE_SHIFT);

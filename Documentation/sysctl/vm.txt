@@ -36,6 +36,7 @@ Currently, these files are in /proc/sys/vm:
 - laptop_mode
 - legacy_va_layout
 - lowmem_reserve_ratio
+- max_readahead
 - max_map_count
 - memory_failure_early_kill
 - memory_failure_recovery

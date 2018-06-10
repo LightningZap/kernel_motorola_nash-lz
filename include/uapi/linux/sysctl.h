@@ -165,7 +165,7 @@ enum
 	VM_UNUSED1=1,		/* was: struct: Set vm swapping control */
 	VM_UNUSED2=2,		/* was; int: Linear or sqrt() swapout for hogs */
 	VM_UNUSED3=3,		/* was: struct: Set free page thresholds */
-	VM_UNUSED4=4,		/* Spare */
+	VM_MAX_READAHEAD=4096,    /* Raising readahead cache size */
 	VM_OVERCOMMIT_MEMORY=5,	/* Turn off the virtual memory safety limit */
 	VM_UNUSED5=6,		/* was: struct: Set buffer memory thresholds */
 	VM_UNUSED7=7,		/* was: struct: Set cache memory thresholds */
