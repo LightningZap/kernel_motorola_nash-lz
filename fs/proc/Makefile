@@ -2,6 +2,9 @@
 # Makefile for the Linux proc filesystem routines.
 #
 
+subdir-ccflags-y += \
+	$(call cc-option,-Wno-unused-function) \
+
 obj-y   += proc.o
 
 proc-y			:= nommu.o task_nommu.o

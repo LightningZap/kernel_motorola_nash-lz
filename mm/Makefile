@@ -8,6 +8,9 @@ KASAN_SANITIZE_slub.o := n
 # Since __builtin_frame_address does work as used, disable the warning.
 CFLAGS_usercopy.o += $(call cc-disable-warning, frame-address)
 
+subdir-ccflags-y += \
+	$(call cc-option,-Wno-unused-value) \
+
 mmu-y			:= nommu.o
 mmu-$(CONFIG_MMU)	:= gup.o highmem.o memory.o mincore.o \
 			   mlock.o mmap.o mprotect.o mremap.o msync.o rmap.o \
