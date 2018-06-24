@@ -112,3 +112,9 @@ all.config
 
 # Kdevelop4
 *.kdev4
+
+# My stuff
+out
+out/*
+kernel.sh
+dirty.sh
