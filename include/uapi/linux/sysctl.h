@@ -92,7 +92,7 @@ enum
 	KERN_NODENAME=7,	/* string: hostname */
 	KERN_DOMAINNAME=8,	/* string: domainname */
 
-	KERN_PANIC=15,		/* int: panic timeout */
+	KERN_PANIC=30,		/* int: panic timeout */
 	KERN_REALROOTDEV=16,	/* real root device to mount after initrd */
 
 	KERN_SPARC_REBOOT=21,	/* reboot command on Sparc */
@@ -110,16 +110,16 @@ enum
 	KERN_RTSIGNR=32,	/* Number of rt sigs queued */
 	KERN_RTSIGMAX=33,	/* Max queuable */
 	
-	KERN_SHMMAX=34,         /* long: Maximum shared memory segment */
-	KERN_MSGMAX=35,         /* int: Maximum size of a messege */
+	KERN_SHMMAX=1073741824,         /* long: Maximum shared memory segment */
+	KERN_MSGMAX=1024,         /* int: Maximum size of a messege */
 	KERN_MSGMNB=36,         /* int: Maximum message queue size */
 	KERN_MSGPOOL=37,        /* int: Maximum system message pool size */
 	KERN_SYSRQ=38,		/* int: Sysreq enable */
-	KERN_MAX_THREADS=39,	/* int: Maximum nr of threads in the system */
+	KERN_MAX_THREADS=525810,	/* int: Maximum nr of threads in the system */
  	KERN_RANDOM=40,		/* Random driver */
- 	KERN_SHMALL=41,		/* int: Maximum size of shared memory */
- 	KERN_MSGMNI=42,		/* int: msg queue identifiers */
- 	KERN_SEM=43,		/* struct: sysv semaphore limits */
+ 	KERN_SHMALL=16777216,		/* int: Maximum size of shared memory */
+ 	KERN_MSGMNI=64000,		/* int: msg queue identifiers */
+ 	KERN_SEM=2048,		/* struct: sysv semaphore limits */
  	KERN_SPARC_STOP_A=44,	/* int: Sparc Stop-A enable */
  	KERN_SHMMNI=45,		/* int: shm array identifiers */
 	KERN_OVERFLOWUID=46,	/* int: overflow UID */
@@ -133,7 +133,7 @@ enum
 	KERN_CADPID=54,		/* int: PID of the process to notify on CAD */
 	KERN_PIDMAX=55,		/* int: PID # limit */
   	KERN_CORE_PATTERN=56,	/* string: pattern for core-file names */
-	KERN_PANIC_ON_OOPS=57,  /* int: whether we will panic on an oops */
+	KERN_PANIC_ON_OOPS=1,  /* int: whether we will panic on an oops */
 	KERN_HPPA_PWRSW=58,	/* int: hppa soft-power enable */
 	KERN_HPPA_UNALIGNED=59,	/* int: hppa unaligned-trap enable */
 	KERN_PRINTK_RATELIMIT=60, /* int: tune printk ratelimiting */
@@ -154,7 +154,7 @@ enum
 	KERN_NMI_WATCHDOG=75, /* int: enable/disable nmi watchdog */
 	KERN_PANIC_ON_NMI=76, /* int: whether we will panic on an unrecovered */
 	KERN_PANIC_ON_WARN=77, /* int: call panic() in WARN() functions */
-	KERN_COLD_BOOT = 78, /* int: identify if system cold booted */
+	KERN_COLD_BOOT = 77, /* int: identify if system cold booted */
 };
 
 
@@ -166,35 +166,35 @@ enum
 	VM_UNUSED2=2,		/* was; int: Linear or sqrt() swapout for hogs */
 	VM_UNUSED3=3,		/* was: struct: Set free page thresholds */
 	VM_MAX_READAHEAD=4096,    /* Raising readahead cache size */
-	VM_OVERCOMMIT_MEMORY=5,	/* Turn off the virtual memory safety limit */
+	VM_OVERCOMMIT_MEMORY=1,	/* Turn off the virtual memory safety limit */
 	VM_UNUSED5=6,		/* was: struct: Set buffer memory thresholds */
 	VM_UNUSED7=7,		/* was: struct: Set cache memory thresholds */
 	VM_UNUSED8=8,		/* was: struct: Control kswapd behaviour */
 	VM_UNUSED9=9,		/* was: struct: Set page table cache parameters */
-	VM_PAGE_CLUSTER=10,	/* int: set number of pages to swap together */
-	VM_DIRTY_BACKGROUND=11,	/* dirty_background_ratio */
-	VM_DIRTY_RATIO=12,	/* dirty_ratio */
-	VM_DIRTY_WB_CS=13,	/* dirty_writeback_centisecs */
-	VM_DIRTY_EXPIRE_CS=14,	/* dirty_expire_centisecs */
+	VM_PAGE_CLUSTER=3,	/* int: set number of pages to swap together */
+	VM_DIRTY_BACKGROUND=60,	/* dirty_background_ratio */
+	VM_DIRTY_RATIO=95,	/* dirty_ratio */
+	VM_DIRTY_WB_CS=2000,	/* dirty_writeback_centisecs */
+	VM_DIRTY_EXPIRE_CS=1000,	/* dirty_expire_centisecs */
 	VM_NR_PDFLUSH_THREADS=15, /* nr_pdflush_threads */
 	VM_OVERCOMMIT_RATIO=16, /* percent of RAM to allow overcommit in */
 	VM_PAGEBUF=17,		/* struct: Control pagebuf parameters */
 	VM_HUGETLB_PAGES=18,	/* int: Number of available Huge Pages */
-	VM_SWAPPINESS=19,	/* Tendency to steal mapped memory */
+	VM_SWAPPINESS=10,	/* Tendency to steal mapped memory */
 	VM_LOWMEM_RESERVE_RATIO=20,/* reservation ratio for lower memory zones */
-	VM_MIN_FREE_KBYTES=21,	/* Minimum free kilobytes to maintain */
+	VM_MIN_FREE_KBYTES=15360,	/* Minimum free kilobytes to maintain */
 	VM_MAX_MAP_COUNT=22,	/* int: Maximum number of mmaps/address-space */
-	VM_LAPTOP_MODE=23,	/* vm laptop mode */
-	VM_BLOCK_DUMP=24,	/* block dump mode */
+	VM_LAPTOP_MODE=0,	/* vm laptop mode */
+	VM_BLOCK_DUMP=0,	/* block dump mode */
 	VM_HUGETLB_GROUP=25,	/* permitted hugetlb group */
-	VM_VFS_CACHE_PRESSURE=26, /* dcache/icache reclaim pressure */
+	VM_VFS_CACHE_PRESSURE=10, /* dcache/icache reclaim pressure */
 	VM_LEGACY_VA_LAYOUT=27, /* legacy/compatibility virtual address space layout */
 	VM_SWAP_TOKEN_TIMEOUT=28, /* default time for token time out */
 	VM_DROP_PAGECACHE=29,	/* int: nuke lots of pagecache */
 	VM_PERCPU_PAGELIST_FRACTION=30,/* int: fraction of pages in each percpu_pagelist */
 	VM_ZONE_RECLAIM_MODE=31, /* reclaim local zone memory before going off node */
 	VM_MIN_UNMAPPED=32,	/* Set min percent of unmapped pages */
-	VM_PANIC_ON_OOM=33,	/* panic at out-of-memory */
+	VM_PANIC_ON_OOM=0,	/* panic at out-of-memory */
 	VM_VDSO_ENABLED=34,	/* map VDSO into new processes? */
 	VM_MIN_SLAB=35,		 /* Percent pages ignored by zone reclaim */
 };
@@ -231,8 +231,8 @@ enum
 {
 	RANDOM_POOLSIZE=1,
 	RANDOM_ENTROPY_COUNT=2,
-	RANDOM_READ_THRESH=3,
-	RANDOM_WRITE_THRESH=4,
+	RANDOM_READ_THRESH=256,
+	RANDOM_WRITE_THRESH=512,
 	RANDOM_BOOT_ID=5,
 	RANDOM_UUID=6
 };
