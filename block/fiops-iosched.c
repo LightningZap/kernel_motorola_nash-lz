@@ -501,7 +501,6 @@ static void fiops_insert_request(struct request_queue *q, struct request *rq)
 static inline void fiops_schedule_dispatch(struct fiops_data *fiopsd)
 {
 	if (fiopsd->busy_queues)
-			fiops_log(fiopsd, "schedule dispatch");
 		kblockd_schedule_work(&fiopsd->unplug_work);
 }
 

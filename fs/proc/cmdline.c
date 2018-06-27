@@ -2,10 +2,13 @@
 #include <linux/init.h>
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
+#include <asm/setup.h>
+
+static char new_command_line[COMMAND_LINE_SIZE];
 
 static int cmdline_proc_show(struct seq_file *m, void *v)
 {
-	seq_printf(m, "%s\n", saved_command_line);
+	seq_printf(m, "%s\n", new_command_line);
 	return 0;
 }
 
@@ -47,6 +50,14 @@ static void remove_safetynet_flags(char *cmd)
 
 static int __init proc_cmdline_init(void)
 {
+	strcpy(new_command_line, saved_command_line);
+
+	/*
+	 * Remove various flags from command line seen by userspace in order to
+	 * pass SafetyNet CTS check.
+	 */
+	remove_safetynet_flags(new_command_line);
+
 	proc_create("cmdline", 0, NULL, &cmdline_proc_fops);
 	return 0;
 }
