@@ -578,12 +578,8 @@ static bool check_for_block(struct wakeup_source *ws)
 		return false;
 
 	// only if ws structure is valid
-<<<<<<< HEAD
-	if (ws) {
-=======
 	if (ws)
 	{
->>>>>>> panth/Pantheon-8.0
 		// wake lock names handled have maximum length=50 and minimum=1
 		length = strlen(ws->name);
 		if ((length > 50) || (length < 1))
@@ -592,11 +588,7 @@ static bool check_for_block(struct wakeup_source *ws)
 		// check if wakelock is in wake lock list to be blocked
 		sprintf(wakelock_name, ";%s;", ws->name);
 
-<<<<<<< HEAD
-		if (strstr(list_wl_search, wakelock_name) == NULL)
-=======
 		if(strstr(list_wl_search, wakelock_name) == NULL)
->>>>>>> panth/Pantheon-8.0
 			return false;
 
 		// wake lock is in list, print it if debug mode on
@@ -604,12 +596,8 @@ static bool check_for_block(struct wakeup_source *ws)
 			printk("Boeffla WL blocker: %s blocked\n", ws->name);
 
 		// if it is currently active, deactivate it immediately + log in debug mode
-<<<<<<< HEAD
-		if (ws->active) {
-=======
 		if (ws->active)
 		{
->>>>>>> panth/Pantheon-8.0
 			wakeup_source_deactivate(ws);
 
 			if (wl_blocker_debug)
@@ -632,13 +620,8 @@ static bool check_for_block(struct wakeup_source *ws)
 static void wakeup_source_report_event(struct wakeup_source *ws)
 {
 #ifdef CONFIG_BOEFFLA_WL_BLOCKER
-<<<<<<< HEAD
-	// AP: check if wakelock is on wakelock blocker list
-	if (!check_for_block(ws)) {
-=======
 	if (!check_for_block(ws))	// AP: check if wakelock is on wakelock blocker list
 	{
->>>>>>> panth/Pantheon-8.0
 #endif
 		ws->event_count++;
 		/* This is racy, but the counter is approximate anyway. */
