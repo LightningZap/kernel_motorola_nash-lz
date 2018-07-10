@@ -1087,6 +1087,7 @@ static ssize_t mdss_xlog_dump_read(struct file *file, char __user *buff,
 		if (len < 0 || len > count) {
 			mutex_unlock(&mdss_dbg_xlog.xlog_lock);
 			pr_err("len is more than the size of user buffer\n");
+			mutex_unlock(&mdss_dbg_xlog.xlog_lock);
 			return 0;
 		}
 
