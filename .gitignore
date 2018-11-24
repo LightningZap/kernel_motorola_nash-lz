@@ -41,6 +41,9 @@ Module.symvers
 #
 # Top-level generic files
 #
+kernel.sh
+dirty.sh
+/out
 /tags
 /TAGS
 /linux
